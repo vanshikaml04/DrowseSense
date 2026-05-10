@@ -1,0 +1,313 @@
+# DrowseSense AI — README.md
+
+````markdown
+# DrowseSense AI 🚗💤
+
+DrowseSense AI is a real-time Driver Drowsiness Detection System built using Deep Learning and Computer Vision.  
+The project uses a Convolutional Neural Network (CNN) to classify whether a driver is **Awake** or **Drowsy** using webcam input.
+
+The main objective of this project is to improve road safety by detecting signs of fatigue and alerting drivers before accidents occur.
+
+---
+
+# 🚀 Features
+
+✅ Real-time webcam-based detection  
+✅ Awake vs Drowsy classification  
+✅ Deep Learning CNN model  
+✅ Custom dataset training  
+✅ TensorFlow/Keras implementation  
+✅ Google Colab compatible  
+✅ Image preprocessing and augmentation  
+✅ Beginner-friendly ML project  
+✅ End-to-end AI pipeline
+
+---
+
+# 🧠 Tech Stack
+
+- Python
+- TensorFlow / Keras
+- OpenCV
+- NumPy
+- Matplotlib
+- Google Colab
+
+---
+
+# 📌 Problem Statement
+
+Driver fatigue and drowsiness are major causes of road accidents worldwide.  
+Traditional monitoring systems are expensive and require specialized hardware.
+
+DrowseSense AI provides a lightweight AI-based solution capable of detecting drowsiness using only a webcam and a trained deep learning model.
+
+---
+
+# 🏗️ Project Workflow
+
+```text
+Dataset Collection
+        ↓
+Data Classification
+        ↓
+Image Preprocessing
+        ↓
+CNN Model Training
+        ↓
+Model Evaluation
+        ↓
+Real-Time Webcam Prediction
+        ↓
+Drowsiness Detection
+````
+
+---
+
+# 📂 Dataset Structure
+
+The dataset was manually classified into two categories:
+
+```text
+DDD/
+│
+├── awake/
+│   ├── image1.jpg
+│   ├── image2.jpg
+│
+└── drowsy/
+    ├── image1.jpg
+    ├── image2.jpg
+```
+
+## Classes
+
+### Awake
+
+Images containing:
+
+* Open eyes
+* Alert facial expressions
+* Normal attentive posture
+
+### Drowsy
+
+Images containing:
+
+* Closed eyes
+* Sleepy facial expressions
+* Yawning
+* Fatigue indicators
+
+---
+
+# 🧹 Data Preprocessing
+
+The dataset was preprocessed using TensorFlow's `ImageDataGenerator`.
+
+### Preprocessing Steps
+
+* Image resizing to `128x128`
+* Pixel normalization (`1./255`)
+* Automatic train-validation split
+* Batch loading for efficient training
+
+```python
+datagen = ImageDataGenerator(
+    rescale=1./255,
+    validation_split=0.2
+)
+```
+
+---
+
+# 🧠 Deep Learning Model
+
+A Convolutional Neural Network (CNN) was built using Keras Sequential API.
+
+## Architecture
+
+* Conv2D Layer (32 filters)
+* MaxPooling
+* Conv2D Layer (64 filters)
+* MaxPooling
+* Conv2D Layer (128 filters)
+* MaxPooling
+* Flatten Layer
+* Dense Layer
+* Dropout Layer
+* Sigmoid Output Layer
+
+The final layer uses sigmoid activation for binary classification.
+
+---
+
+# ⚙️ Model Training
+
+The model was trained using:
+
+* Optimizer: Adam
+* Loss Function: Binary Crossentropy
+* Epochs: 10
+* Batch Size: 32
+
+```python
+model.compile(
+    optimizer='adam',
+    loss='binary_crossentropy',
+    metrics=['accuracy']
+)
+```
+
+---
+
+# 📊 Training Results
+
+The model achieved:
+
+* ~83% Training Accuracy
+* ~63% Validation Accuracy
+
+These results demonstrate the effectiveness of CNNs for driver state classification using a relatively small custom dataset.
+
+---
+
+# 🎥 Real-Time Detection
+
+After training, the saved model was used for live webcam prediction.
+
+The system:
+
+1. Captures image from webcam
+2. Preprocesses the frame
+3. Passes image to CNN
+4. Predicts:
+
+   * Awake
+   * Drowsy
+5. Displays result in real time
+
+---
+
+# 🖥️ Sample Prediction Pipeline
+
+```python
+prediction = model.predict(img_array)
+
+if prediction[0][0] > 0.5:
+    result = "Drowsy"
+else:
+    result = "Awake"
+```
+
+---
+
+# 📦 Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/yourusername/DrowseSense-AI.git
+cd DrowseSense-AI
+```
+
+---
+
+## Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# ▶️ Run Project
+
+```bash
+python app.py
+```
+
+---
+
+# 📋 Requirements
+
+```text
+tensorflow
+opencv-python
+numpy
+matplotlib
+Pillow
+```
+
+---
+
+# 📸 Future Improvements
+
+The project can be further enhanced using:
+
+* MediaPipe Face Mesh
+* Eye Aspect Ratio (EAR)
+* Alarm/Buzzer System
+* YOLO Face Detection
+* Mobile Deployment
+* Flask Web Application
+* Streamlit Dashboard
+* Real-Time Video Pipeline
+* Edge AI Optimization
+
+---
+
+# 🌍 Applications
+
+* Driver Monitoring Systems
+* Smart Vehicles
+* Transportation Safety
+* Fleet Monitoring
+* Accident Prevention
+* AI-based Surveillance
+
+---
+
+# 🎯 Learning Outcomes
+
+Through this project, the following concepts were implemented and understood:
+
+* Deep Learning Fundamentals
+* CNN Architecture
+* Binary Image Classification
+* Real-Time Inference
+* TensorFlow/Keras Workflow
+* Image Preprocessing
+* Webcam Integration
+* End-to-End ML Pipeline
+
+---
+
+# 🤝 Acknowledgements
+
+* TensorFlow
+* Keras
+* OpenCV
+* Google Colab
+* Kaggle Dataset Contributors
+
+---
+
+# 📜 License
+
+This project is open-source and available under the MIT License.
+
+---
+
+# 👨‍💻 Author
+
+Developed by Vanshika Rani
+
+---
+
+# ⭐ If You Like This Project
+
+Give this repository a star ⭐ and feel free to contribute.
+
+```
+```
